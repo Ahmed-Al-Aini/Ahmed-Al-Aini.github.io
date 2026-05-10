@@ -1,14 +1,380 @@
 <!DOCTYPE html>
-<html lang="ar">
+<html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <meta name="description" content="Ahmed Al-Aini - مطور برمجيات وأنظمة معلومات">
-    <title>Ahmed Al-Aini | مطور برمجيات</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- SEO Titles & Descriptions (ديناميكية ولكن الأساس يبقى محدد) -->
+    <title>أحمد العيني | مطور Full-Stack</title>
+    <meta name="description" content="الصفحة الشخصية لأحمد العيني، مطور Full-Stack متخصص في PHP، C++، MySQL. أبحث عن فرص تدريب وتعاون.">
+    <meta name="keywords" content="أحمد العيني, مطور, Full-Stack, PHP, C++, MySQL, Django, GitHub, Yemen">
+    <meta name="author" content="Ahmed Al-Aini">
+    <link rel="canonical" href="https://ahmed-al-aini.github.io/">
+
+    <!-- Open Graph / Social Media -->
+    <meta property="og:title" content="أحمد العيني | مطور Full-Stack">
+    <meta property="og:description" content="الصفحة الشخصية لأحمد العيني، مطور Full-Stack وباحث عن فرص تدريب.">
+    <meta property="og:image" content="https://avatars.githubusercontent.com/u/25160091?v=4">
+    <meta property="og:url" content="https://ahmed-al-aini.github.io/">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="ar_AR">
+    <meta property="og:locale:alternate" content="en_US">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="أحمد العيني | مطور Full-Stack">
+    <meta name="twitter:description" content="أهلاً، أنا أحمد. مطور Full-Stack وباحث عن فرص تدريب.">
+    <meta name="twitter:image" content="https://avatars.githubusercontent.com/u/25160091?v=4">
+
+    <link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>👨‍💻</text></svg>">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            color: #f1f5f9;
+            line-height: 1.6;
+            padding: 2rem 1rem;
+            min-height: 100vh;
+            transition: all 0.3s ease;
+        }
+
+        /* عند التبديل للإنجليزي، الاتجاه يصبح يسار لليمين */
+        body[dir="ltr"] {
+            text-align: left;
+        }
+        body[dir="rtl"] {
+            text-align: right;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .card {
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(10px);
+            border-radius: 2rem;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        }
+
+        .profile-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .avatar {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 4px solid #38bdf8;
+            margin-bottom: 1rem;
+            object-fit: cover;
+            background: #334155;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(to right, #38bdf8, #818cf8);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .title {
+            font-size: 1.2rem;
+            color: #94a3b8;
+            margin-bottom: 1rem;
+        }
+
+        .lang-switch {
+            position: fixed;
+            top: 1rem;
+            right: 1rem;
+            background: #1e293b;
+            border: 1px solid #38bdf8;
+            color: #38bdf8;
+            padding: 0.5rem 1rem;
+            border-radius: 9999px;
+            cursor: pointer;
+            font-weight: bold;
+            z-index: 1000;
+            transition: 0.2s;
+        }
+        .lang-switch:hover {
+            background: #38bdf8;
+            color: #0f172a;
+        }
+
+        .social-links {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .social-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: #1e293b;
+            padding: 0.75rem 1.5rem;
+            border-radius: 9999px;
+            color: #f1f5f9;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+            border: 1px solid #334155;
+        }
+
+        .social-btn:hover {
+            transform: translateY(-3px);
+            background: #38bdf8;
+            color: #0f172a;
+            border-color: #38bdf8;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            gap: 0.75rem;
+            margin-top: 1rem;
+        }
+
+        .skill-tag {
+            background: #334155;
+            text-align: center;
+            padding: 0.5rem 1rem;
+            border-radius: 9999px;
+            font-size: 0.875rem;
+            font-weight: 500;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .project-card {
+            background: #1e293b;
+            padding: 1.5rem;
+            border-radius: 1.5rem;
+            transition: transform 0.3s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .project-card h3 {
+            color: #38bdf8;
+            margin-bottom: 0.5rem;
+        }
+
+        .project-tech {
+            font-size: 0.75rem;
+            color: #94a3b8;
+            margin: 0.5rem 0;
+        }
+
+        .project-link {
+            display: inline-block;
+            margin-top: 1rem;
+            color: #38bdf8;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .footer {
+            text-align: center;
+            padding-top: 2rem;
+            color: #64748b;
+            font-size: 0.875rem;
+        }
+
+        @media (max-width: 640px) {
+            .card {
+                padding: 1.5rem;
+            }
+            h1 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
 </head>
-<body>
-    <h1>أهلاً، أنا أحمد العيني</h1>
-    <p>مطور برمجيات | طالب نظم معلومات</p>
-    <p>أعمل على: PHP, C++, MySQL, Bootstrap</p>
-    <p>تابعني على <a href="https://github.com/Ahmed-Al-Aini">GitHub</a></p>
+<body dir="rtl">
+    <button class="lang-switch" id="langToggle">English</button>
+    <div class="container">
+        <div class="card">
+            <div class="profile-header">
+                <img src="https://avatars.githubusercontent.com/u/25160091?v=4" alt="Ahmed Al-Aini" class="avatar">
+                <h1 id="name">أحمد العيني</h1>
+                <div class="title" id="title">🎯 Full-Stack Developer | Systems Engineering Student | Data engineering | Database management's</div>
+                <div class="location">📍 Sana'a, Yemen</div>
+            </div>
+
+            <div style="text-align: center; margin-bottom: 2rem;">
+                <p id="bio" style="font-size: 1.1rem; max-width: 600px; margin: 0 auto; color: #cbd5e1;">
+                    أطمح لبناء أنظمة scalable و production-ready. أبحث عن فرص تدريب وتعاون في تطوير الواجهات الخلفية.
+                </p>
+            </div>
+
+            <div class="social-links">
+                <a href="https://github.com/Ahmed-Al-Aini" class="social-btn" target="_blank" rel="noopener noreferrer">🔗 GitHub</a>
+                <a href="https://linkedin.com/in/ahmed-alaini" class="social-btn" target="_blank" rel="noopener noreferrer" id="linkedinBtn">💼 LinkedIn</a>
+                <a href="mailto:25160091@su.edu.ye" class="social-btn" id="emailBtn">📧 Email</a>
+            </div>
+
+            <h2 id="skillsTitle">🛠️ التقنيات التي أستخدمها</h2>
+            <div class="skills-grid">
+                <span class="skill-tag">PHP</span>
+                <span class="skill-tag">C++</span>
+                <span class="skill-tag">MySQL</span>
+                <span class="skill-tag">Bootstrap</span>
+                <span class="skill-tag">Git & GitHub</span>
+                <span class="skill-tag">Python</span>
+                <span class="skill-tag">Django</span>
+                <span class="skill-tag">JavaScript</span>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2 id="projectsTitle">🚀 أبرز مشاريعي</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <h3>🏥 Hospital Management System</h3>
+                    <div class="project-tech">PHP · MySQL · Bootstrap</div>
+                    <p id="project1Desc" style="font-size: 0.9rem; margin-top: 0.5rem;">نظام متكامل لإدارة المستشفيات (المرضى، المواعيد، الفواتير) مع نظام صلاحيات متكامل.</p>
+                    <a href="https://github.com/Ahmed-Al-Aini/Hospital-Management-System" class="project-link" target="_blank" rel="noopener noreferrer" id="project1Link">عرض المشروع →</a>
+                </div>
+                <div class="project-card">
+                    <h3>💳 Core Banking System (CLI)</h3>
+                    <div class="project-tech">C++ · OOP · File I/O</div>
+                    <p id="project2Desc" style="font-size: 0.9rem; margin-top: 0.5rem;">محاكاة مصرفية كاملة بـ C++ مع معالجة المعاملات وCSV persistence.</p>
+                    <a href="https://github.com/Ahmed-Al-Aini/Banking-system" class="project-link" target="_blank" rel="noopener noreferrer" id="project2Link">عرض المشروع →</a>
+                </div>
+                <div class="project-card">
+                    <h3>📝 Data Structure Text Editor</h3>
+                    <div class="project-tech">C++ · Stack · Queue</div>
+                    <p id="project3Desc" style="font-size: 0.9rem; margin-top: 0.5rem;">محرر نصوص منخفض المستوى يوضح خوارزميات الـ Undo/Redo باستخدام Stack.</p>
+                    <a href="https://github.com/Ahmed-Al-Aini/Data-Structure-Text-Editor" class="project-link" target="_blank" rel="noopener noreferrer" id="project3Link">عرض المشروع →</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2 id="aboutSiteTitle">📘 عن هذا الموقع</h2>
+            <p id="aboutSiteText">هذه هي بطاقة التعريف الرقمية الخاصة بي (Digital Business Card). يمكنك استخدامها للتعرف عليّ، ومشاهدة مشاريعي، والتواصل معي بسهولة. يتم تحديث هذه الصفحة بانتظام لتعكس أحدث أعمالي ومهاراتي. شكراً لزيارتك!</p>
+        </div>
+
+        <div class="footer">
+            <p id="footerText">© 2025–2026 أحمد العيني | مطور Full-Stack طموح من اليمن 🇾🇪</p>
+            <p style="margin-top: 0.5rem;">
+                <a href="https://github.com/Ahmed-Al-Aini" style="color: #38bdf8; text-decoration: none;">GitHub</a> |
+                <a href="https://linkedin.com/in/ahmed-alaini-664708401" style="color: #38bdf8; text-decoration: none;">LinkedIn</a>
+            </p>
+        </div>
+    </div>
+
+    <script>
+        (function() {
+            let currentLang = 'ar';
+            const toggleBtn = document.getElementById('langToggle');
+
+            const translations = {
+                ar: {
+                    name: 'أحمد العيني',
+                    title: '🎯 Full-Stack Developer | Systems Engineering Student',
+                    bio: 'أطمح لبناء أنظمة scalable و production-ready. أبحث عن فرص تدريب وتعاون في تطوير الواجهات الخلفية.',
+                    linkedinBtn: '💼 LinkedIn',
+                    emailBtn: '📧 البريد الإلكتروني',
+                    skillsTitle: '🛠️ التقنيات التي أستخدمها',
+                    projectsTitle: '🚀 أبرز مشاريعي',
+                    project1Desc: 'نظام متكامل لإدارة المستشفيات (المرضى، المواعيد، الفواتير) مع نظام صلاحيات متكامل.',
+                    project2Desc: 'محاكاة مصرفية كاملة بـ C++ مع معالجة المعاملات وCSV persistence.',
+                    project3Desc: 'محرر نصوص منخفض المستوى يوضح خوارزميات الـ Undo/Redo باستخدام Stack.',
+                    project1Link: 'عرض المشروع →',
+                    project2Link: 'عرض المشروع →',
+                    project3Link: 'عرض المشروع →',
+                    aboutSiteTitle: '📘 عن هذا الموقع',
+                    aboutSiteText: 'هذه هي بطاقة التعريف الرقمية الخاصة بي (Digital Business Card). يمكنك استخدامها للتعرف عليّ، ومشاهدة مشاريعي، والتواصل معي بسهولة. يتم تحديث هذه الصفحة بانتظام لتعكس أحدث أعمالي ومهاراتي. شكراً لزيارتك!',
+                    footerText: '© 2025–2026 أحمد العيني | مطور Full-Stack طموح من اليمن 🇾🇪',
+                },
+                en: {
+                    name: 'Ahmed Al-Aini',
+                    title: '🎯 Full-Stack Developer | Systems Engineering Student',
+                    bio: 'I aspire to build scalable, production-ready systems. Seeking internships and collaborations in back-end development.',
+                    linkedinBtn: '💼 LinkedIn',
+                    emailBtn: '📧 Email',
+                    skillsTitle: '🛠️ Technologies I Use',
+                    projectsTitle: '🚀 Featured Projects',
+                    project1Desc: 'A complete hospital management system (patients, appointments, billing, role-based access).',
+                    project2Desc: 'Full CLI banking simulation with transactions, CSV persistence, and OOP design.',
+                    project3Desc: 'Low-level text editor showcasing Undo/Redo using stacks and buffer management using queues.',
+                    project1Link: 'View Project →',
+                    project2Link: 'View Project →',
+                    project3Link: 'View Project →',
+                    aboutSiteTitle: '📘 About This Website',
+                    aboutSiteText: 'This is my personal digital business card. Use it to learn about me, explore my projects, and connect with me easily. This page is regularly updated to reflect my latest work and skills. Thanks for visiting!',
+                    footerText: '© 2025–2026 Ahmed Al-Aini | Ambitious Full-Stack Developer from Yemen 🇾🇪',
+                }
+            };
+
+            function switchLanguage(lang) {
+                const t = translations[lang];
+                if (!t) return;
+
+                document.getElementById('name').innerText = t.name;
+                document.getElementById('title').innerText = t.title;
+                document.getElementById('bio').innerText = t.bio;
+                document.getElementById('linkedinBtn').innerHTML = t.linkedinBtn;
+                document.getElementById('emailBtn').innerHTML = t.emailBtn;
+                document.getElementById('skillsTitle').innerHTML = t.skillsTitle;
+                document.getElementById('projectsTitle').innerHTML = t.projectsTitle;
+                document.getElementById('project1Desc').innerText = t.project1Desc;
+                document.getElementById('project2Desc').innerText = t.project2Desc;
+                document.getElementById('project3Desc').innerText = t.project3Desc;
+                document.getElementById('project1Link').innerHTML = t.project1Link;
+                document.getElementById('project2Link').innerHTML = t.project2Link;
+                document.getElementById('project3Link').innerHTML = t.project3Link;
+                document.getElementById('aboutSiteTitle').innerHTML = t.aboutSiteTitle;
+                document.getElementById('aboutSiteText').innerText = t.aboutSiteText;
+                document.getElementById('footerText').innerHTML = t.footerText;
+
+                if (lang === 'en') {
+                    document.body.setAttribute('dir', 'ltr');
+                    toggleBtn.innerText = 'العربية';
+                } else {
+                    document.body.setAttribute('dir', 'rtl');
+                    toggleBtn.innerText = 'English';
+                }
+                currentLang = lang;
+            }
+
+            if (toggleBtn) {
+                toggleBtn.addEventListener('click', () => {
+                    const newLang = currentLang === 'ar' ? 'en' : 'ar';
+                    switchLanguage(newLang);
+                });
+            }
+
+            // بدء بالعربية لأن هذا هو الافتراضي وتطابق meta tags
+            switchLanguage('ar');
+        })();
+    </script>
 </body>
 </html>
