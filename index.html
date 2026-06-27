@@ -760,7 +760,7 @@
     <script>
         // Language Toggle
         const langToggle = document.getElementById('langToggle');
-        let currentLang = localStorage.getItem('language') || 'en';
+        let currentLang = localStorage.getItem('language') || 'ar';
 
         const translations = {
             ar: {
@@ -832,6 +832,7 @@
 
         langToggle.addEventListener('click', () => {
             const newLang = currentLang === 'ar' ? 'en' : 'ar';
+            setLanguage(newLang);
         });
 
         // Initialize language
